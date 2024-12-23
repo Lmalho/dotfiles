@@ -26,6 +26,12 @@ curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 fisher install IlanCosman/tide@v6
 ```
 
+### Catppuccin
+
+```bash
+fisher install catppuccin/fish
+```
+
 ## fzf
 
 ```bash

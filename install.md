@@ -49,3 +49,9 @@ brew install zoxide
 ```bash
 brew install gh
 ```
+
+## bat
+
+```bash
+brew install bat
+```

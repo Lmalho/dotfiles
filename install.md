@@ -37,3 +37,9 @@ brew install fzf
 ```bash
 brew install zoxide
 ```
+
+## github cli
+
+```bash
+brew install gh
+```

@@ -41,8 +41,14 @@ vim.api.nvim_set_keymap('n', 'N', 'Nzz', { noremap = true })
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv") -- Move current line down
 vim.keymap.set('v', 'K', ":m '>-2<CR>gv=gv") -- Move current line up
+
+vim.keymap.set('n', '<leader>v', ':vsplit<CR>', { desc = 'Split vertically' })
 -- Close buffer
 vim.api.nvim_set_keymap('n', '<leader>b', ':bdelete<CR>', { noremap = true, desc = 'Close the current buffer' })
+
+-- Copilot
+vim.api.nvim_set_keymap('n', '<leader>ac', ':Copilot enable<CR>', { noremap = true, desc = 'Copilot Enable' })
+vim.api.nvim_set_keymap('n', '<leader>aC', ':Copilot disable<CR>', { noremap = true, desc = 'Copilot Disable' })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

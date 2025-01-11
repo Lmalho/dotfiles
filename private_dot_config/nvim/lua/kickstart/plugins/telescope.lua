@@ -108,6 +108,22 @@ return {
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      vim.keymap.set('n', '<leader>sv', function()
+        builtin.find_files {
+          attach_mappings = function(_, map)
+            map('i', '<CR>', function(prompt_bufnr)
+              local action_state = require 'telescope.actions.state'
+              local actions = require 'telescope.actions'
+              local selected_entry = action_state.get_selected_entry()
+              local filename = selected_entry.path
+              actions.close(prompt_bufnr)
+              vim.cmd('vsplit ' .. filename)
+            end)
+            return true
+          end,
+        }
+      end, { desc = 'Split vertically with file picker' })
     end,
   },
 }

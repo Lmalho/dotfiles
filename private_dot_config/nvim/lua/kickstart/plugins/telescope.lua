@@ -104,6 +104,13 @@ return {
         }
       end, { desc = '[S]earch [/] in Open Files' })
 
+      -- Hiden Files
+      vim.keymap.set('n', '<leader>si', function()
+        builtin.find_files {
+          hidden = true,
+        }
+      end, { desc = '[S]earch H[i]dden Files' })
+
       -- Shortcut for searching your Neovim configuration files
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }

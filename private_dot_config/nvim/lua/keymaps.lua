@@ -73,6 +73,22 @@ vim.api.nvim_set_keymap('n', '<leader>b', ':bdelete<CR>', {
   desc = 'Close the current buffer',
 })
 
+-- Bufferline
+vim.api.nvim_set_keymap('n', 'gb', '<cmd>BufferLinePick<CR>', {
+  noremap = true,
+  desc = 'Bufferline Pick',
+})
+
+vim.api.nvim_set_keymap('n', '<Tab>', '<cmd>BufferLineCycleNext<CR>', {
+  noremap = true,
+  desc = 'Bufferline Next',
+})
+
+vim.api.nvim_set_keymap('n', '<S-Tab>', '<cmd>BufferLineCyclePrev<CR>', {
+  noremap = true,
+  desc = 'Bufferline Pick',
+})
+
 -- Copilot
 vim.api.nvim_set_keymap('n', '<leader>ac', ':Copilot enable<CR>', {
   noremap = true,
@@ -97,17 +113,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
-
-vim.keymap.set('n', '<leader>;a', "<cmd>lua require('harpoon.mark').add_file()<cr>", { desc = 'Add to Harpoon' })
-vim.keymap.set('n', '<leader>;e', "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", { desc = 'Show Harpoon' })
-vim.keymap.set('n', '<leader>;1', "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", { desc = 'Harpoon Buffer 1' })
-vim.keymap.set('n', '<leader>;2', "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", { desc = 'Harpoon Buffer 2' })
-vim.keymap.set('n', '<leader>;3', "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { desc = 'Harpoon Buffer 3' })
-vim.keymap.set('n', '<leader>;4', "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", { desc = 'Harpoon Buffer 4' })
-vim.keymap.set('n', '<leader>;5', "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", { desc = 'Harpoon Buffer 5' })
-vim.keymap.set('n', '<leader>;6', "<cmd>lua require('harpoon.ui').nav_file(6)<cr>", { desc = 'Harpoon Buffer 6' })
-vim.keymap.set('n', '<leader>;7', "<cmd>lua require('harpoon.ui').nav_file(7)<cr>", { desc = 'Harpoon Buffer 7' })
-vim.keymap.set('n', '<leader>;8', "<cmd>lua require('harpoon.ui').nav_file(8)<cr>", { desc = 'Harpoon Buffer 8' })
-vim.keymap.set('n', '<leader>;9', "<cmd>lua require('harpoon.ui').nav_file(9)<cr>", { desc = 'Harpoon Buffer 9' })
 
 -- vim: ts=2 sts=2 sw=2 et

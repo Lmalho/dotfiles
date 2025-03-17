@@ -30,6 +30,7 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
+			require("lspconfig").gh_actions_ls.setup({})
 			-- Brief aside: **What is LSP?**
 			--
 			-- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -103,7 +104,7 @@ return {
 
 					-- Execute a code action, usually your cursor needs to be on top of an error
 					-- or a suggestion from your LSP for this to activate.
-					map("<leader>.", vim.lsp.buf.code_action, "Code [A]ction", { "n", "x" })
+					map("<leader>.", vim.lsp.buf.code_action, "Code Action", { "n", "x" })
 
 					-- WARN: This is not Goto Definition, this is Goto Declaration.
 					--  For example, in C this would take you to the header.
@@ -179,14 +180,7 @@ return {
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				-- clangd = {},
-				gopls = {
-					settings = {
-						gopls = {
-							buildFlags = { "-tags=test" },
-							gofumpt = true,
-						},
-					},
-				},
+				gopls = {},
 				-- pyright = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -197,7 +191,17 @@ return {
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
 				-- ts_ls = {},
 				--
-
+				dockerls = {
+					settings = {
+						docker = {
+							dockerfileLinting = true,
+							provideLintTask = true,
+							lintOnSave = true,
+							lintOnChange = true,
+							lintTask = "dockerfilelint",
+						},
+					},
+				},
 				lua_ls = {
 					-- cmd = { ... },
 					-- filetypes = { ... },
@@ -227,12 +231,23 @@ return {
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
+				"dockerfile-language-server",
+				"prettier",
+				"prettierd",
+				"eslint-lsp",
+				"gofumpt",
+				"goimports",
+				"goimports-reviser",
+				"gomodifytags",
+				"gopls",
+				-- "typescript-language-server",
+				"yaml-language-server",
+				-- "markdownlint",
+				-- "marksman",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			require("mason-lspconfig").setup({
-				ensure_installed = {},
-				automatic_installation = true,
 				handlers = {
 					function(server_name)
 						local server = servers[server_name] or {}
@@ -246,7 +261,6 @@ return {
 			})
 		end,
 	},
-	-- inline diagnostics
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
 		event = "VeryLazy", -- Or `LspAttach`

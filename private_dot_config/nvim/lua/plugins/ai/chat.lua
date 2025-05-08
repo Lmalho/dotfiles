@@ -34,7 +34,7 @@ return {
 	{
 		dir = IS_DEV and "~/Projects/research/CopilotChat.nvim" or nil,
 		"CopilotC-Nvim/CopilotChat.nvim",
-		-- version = "v3.3.0", -- Use a specific version to prevent breaking changes
+		version = "v3.9.1", -- Use a specific version to prevent breaking changes
 		dependencies = {
 			{ "nvim-telescope/telescope.nvim" }, -- Use telescope for help actions
 			{ "nvim-lua/plenary.nvim" },
@@ -43,9 +43,9 @@ return {
 			question_header = "## User ",
 			answer_header = "## Copilot ",
 			error_header = "## Error ",
-			model = "claude-3.7-sonnet",
+			model = "gpt-4o",
 			prompts = prompts,
-			auto_follow_cursor = false, -- Don't follow the cursor after getting response
+			auto_follow_cursor = true, -- Don't follow the cursor after getting response
 			mappings = {
 				-- Use tab for completion
 				complete = {
@@ -128,7 +128,7 @@ return {
 				"<leader>ap",
 				function()
 					local actions = require("CopilotChat.actions")
-					require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+					require("CopilotChat.select_prompt").pick(actions.select_prompt())
 				end,
 				desc = "CopilotChat - Prompt actions",
 			},

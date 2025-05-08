@@ -81,4 +81,31 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+vim.api.nvim_set_keymap("i", "jj", "<Esc>", { desc = "Exit insert mode" })
+
+-- Obsidian
+vim.api.nvim_set_keymap("n", "<leader>on", ":ObsidianNew<CR>", { noremap = true, desc = "Obsidian new note" })
+vim.api.nvim_set_keymap("n", "<leader>os", ":ObsidianSearch<CR>", { noremap = true, desc = "Obsidian search notes" })
+vim.api.nvim_set_keymap("n", "<leader>ot", ":ObsidianTags<CR>", { noremap = true, desc = "Obsidian search tags" })
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>of",
+	":ObsidianQuickSwitch<CR>",
+	{ noremap = true, desc = "Obsidian quick switch" }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>od",
+	":ObsidianToday<CR>",
+	{ noremap = true, desc = "Obsidian Today's daily note" }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>oc",
+	":ObsidianToggleCheckbox<CR>",
+	{ noremap = true, desc = "Obsidian toggle checkbox" }
+)
+-- Register Copilot
+vim.api.nvim_set_keymap("i", "<C-a>", 'copilot#Accept("<CR>")', { expr = true, silent = true, desc = "Copilot Accept" })
+vim.api.nvim_set_keymap("i", "<C-e>", "copilot#Dismiss()", { expr = true, silent = true, desc = "Copilot Dismiss" })
 -- vim: ts=2 sts=2 sw=2 et

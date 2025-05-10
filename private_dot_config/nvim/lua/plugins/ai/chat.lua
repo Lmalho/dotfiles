@@ -10,7 +10,7 @@ local prompts = {
 	FixError = "Please explain the error in the following text and provide a solution.",
 	BetterNamings = "Please provide better names for the following variables and functions.",
 	Documentation = "Please provide documentation for the following code.",
-	JSDocs = "Please provide documentation in JSDoc format for the following code",
+	JSDocs = "Please provide documentation in JSDoc format for the following code, write only the comments",
 	SwaggerApiDocs = "Please provide documentation for the following API using Swagger.",
 	SwaggerJsDocs = "Please write JSDoc for the following API using Swagger.",
 	-- Text related prompts

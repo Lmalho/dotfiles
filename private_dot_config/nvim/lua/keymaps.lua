@@ -84,8 +84,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.api.nvim_set_keymap("i", "jj", "<Esc>", { desc = "Exit insert mode" })
 
 -- Obsidian
-vim.api.nvim_set_keymap("n", "<leader>on", ":ObsidianNew<CR>", { noremap = true, desc = "Obsidian new note" })
-vim.api.nvim_set_keymap("n", "<leader>os", ":ObsidianSearch<CR>", { noremap = true, desc = "Obsidian search notes" })
+vim.api.nvim_set_keymap("n", "<leader>on", ":Obsidian new<CR>", { noremap = true, desc = "Obsidian new note" })
+vim.api.nvim_set_keymap("n", "<leader>os", ":Obsidian search<CR>", { noremap = true, desc = "Obsidian search notes" })
 vim.api.nvim_set_keymap("n", "<leader>ot", ":ObsidianTags<CR>", { noremap = true, desc = "Obsidian search tags" })
 vim.api.nvim_set_keymap(
 	"n",

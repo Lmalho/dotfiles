@@ -65,6 +65,7 @@ require("lazy").setup({
 	-- { import = 'custom.plugins' },
 	{ import = "plugins" },
 	{ import = "plugins/ai" },
+	-- { import = "plugins/obsidian" },
 	--
 	-- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
 	-- Or use telescope!

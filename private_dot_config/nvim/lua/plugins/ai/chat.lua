@@ -20,7 +20,7 @@ local prompts = {
 	Concise = "Please rewrite the following text to make it more concise.",
 }
 
-return {
+local config ={
 	{ import = "plugins.ai.copilot" }, -- Or use { import = "lazyvim.plugins.extras.coding.copilot" },
 	{
 		"folke/which-key.nvim",
@@ -34,7 +34,7 @@ return {
 	{
 		dir = IS_DEV and "~/Projects/research/CopilotChat.nvim" or nil,
 		"CopilotC-Nvim/CopilotChat.nvim",
-		version = "v3.9.1", -- Use a specific version to prevent breaking changes
+		-- version = "v3.9.1", -- Use a specific version to prevent breaking changes
 		dependencies = {
 			{ "nvim-telescope/telescope.nvim" }, -- Use telescope for help actions
 			{ "nvim-lua/plenary.nvim" },

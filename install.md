@@ -38,26 +38,19 @@ fisher install IlanCosman/tide@v6
 fisher install catppuccin/fish
 ```
 
-## fzf
+## Current list of tools to install with brew
 
-```bash
-brew install fzf
-```
-
-## zioxide
-
-```bash
-brew install zoxide
-```
-
-## github cli
-
-```bash
-brew install gh
-```
-
-## bat
-
-```bash
-brew install bat
-```
+awscli
+chezmoi
+lazydocker
+neovim
+ripgrep
+bat
+fish
+gh
+lazygit
+yazi
+fzf
+glab
+tmux
+zoxide

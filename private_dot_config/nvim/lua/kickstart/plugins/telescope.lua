@@ -55,8 +55,14 @@ return {
 
 			local select_one_or_multi = function(prompt_bufnr)
 				local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+
+				vim.notify(picker.prompt_title, vim.log.levels.INFO, { title = "Telescope Picker Context" })
+				-- original logic for other pickers (e.g., file finders)
 				local multi = picker:get_multi_selection()
-				if not vim.tbl_isempty(multi) then
+				if
+					not vim.tbl_isempty(multi)
+					and (picker.prompt_title ~= "Select buffer(s)" and picker.prompt_title ~= "Select file(s)")
+				then
 					require("telescope.actions").close(prompt_bufnr)
 					for _, j in pairs(multi) do
 						if j.path ~= nil then

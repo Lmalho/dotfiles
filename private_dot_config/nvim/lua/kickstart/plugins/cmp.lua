@@ -35,6 +35,7 @@ return {
 			--  into multiple repos for maintenance purposes.
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-buffer",
 		},
 		config = function()
 			-- See `:help cmp`
@@ -47,6 +48,9 @@ return {
 					expand = function(args)
 						luasnip.lsp_expand(args.body)
 					end,
+				},
+				window = {
+					completion = cmp.config.window.bordered(),
 				},
 				completion = { completeopt = "menu,menuone,noinsert" },
 
@@ -108,10 +112,11 @@ return {
 						-- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
 						group_index = 0,
 					},
-					{ name = "nvim_lsp", group_index = 2 },
+					{ name = "nvim_lsp", group_index = 1 },
 					{ name = "luasnip", group_index = 2 },
 					{ name = "path", group_index = 2 },
-					{ name = "natdat" },
+					{ name = "natdat", group_index = 3 },
+					{ name = "buffer", group_index = 3 },
 				},
 			})
 		end,

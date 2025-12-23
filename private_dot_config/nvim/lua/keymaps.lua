@@ -7,6 +7,9 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save the current buffer" })
 
+-- Delete word using alt backspace
+vim.api.nvim_set_keymap("i", "<M-BS>", "<C-W>", { noremap = true, silent = true, desc = "Delete word backward" })
+
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 

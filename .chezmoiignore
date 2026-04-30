@@ -1,0 +1,4 @@
+.config/nvim/biome_repro
+.config/nvim/biome_repro/**
+.config/nvim/lazy-lock.json
+.config/nvim/GEMINI.md

@@ -146,7 +146,7 @@ return {
 					--
 					-- This may be unwanted, since they displace some of your code
 					if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-						map("<leader>th", function()
+						map("<leader>h", function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 						end, "[T]oggle Inlay [H]ints")
 					end
@@ -181,13 +181,13 @@ return {
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				-- clangd = {},
-				-- gopls = {
-				--   settings = {
-				--     gopls = {
-				--       buildFlags = { '-tags=test' },
-				--     },
-				--   },
-				-- },
+				gopls = {
+					settings = {
+						gopls = {
+							buildFlags = { "-tags=test" },
+						},
+					},
+				},
 				-- pyright = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -208,6 +208,12 @@ return {
 							lintTask = "dockerfilelint",
 						},
 					},
+				},
+				biome = {
+					root_dir = function(fname)
+						return vim.fs.root(fname, { "biome.json", "biome.jsonc" })
+							or vim.fs.root(fname, { "package.json", ".git" })
+					end,
 				},
 				lua_ls = {
 					-- cmd = { ... },
@@ -237,16 +243,17 @@ return {
 			-- for you, so that they are available from within Neovim.
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
+				"biome",
 				"stylua", -- Used to format Lua code
 				"dockerfile-language-server",
 				"prettier",
 				"prettierd",
 				"eslint-lsp",
-				-- "gofumpt",
-				-- "goimports",
-				-- "goimports-reviser",
-				-- "gomodifytags",
-				-- "gopls",
+				"gofumpt",
+				"goimports",
+				"goimports-reviser",
+				"gomodifytags",
+				"gopls",
 				-- "typescript-language-server",
 				"yaml-language-server",
 				-- "markdownlint",

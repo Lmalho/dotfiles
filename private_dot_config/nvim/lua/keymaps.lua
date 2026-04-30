@@ -6,6 +6,7 @@
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save the current buffer" })
+vim.keymap.set("n", "<leader>t", ":enew<CR>", { desc = "Open a new buffer" })
 
 -- Delete word using alt backspace
 vim.api.nvim_set_keymap("i", "<M-BS>", "<C-W>", { noremap = true, silent = true, desc = "Delete word backward" })
@@ -65,8 +66,8 @@ vim.api.nvim_set_keymap(
 )
 
 -- Copilot
-vim.api.nvim_set_keymap("n", "<leader>ac", ":Copilot enable<CR>", { noremap = true, desc = "Copilot Enable" })
-vim.api.nvim_set_keymap("n", "<leader>aC", ":Copilot disable<CR>", { noremap = true, desc = "Copilot Disable" })
+vim.api.nvim_set_keymap("n", "<leader>ae", ":Copilot enable<CR>", { noremap = true, desc = "Copilot Enable" })
+vim.api.nvim_set_keymap("n", "<leader>aE", ":Copilot disable<CR>", { noremap = true, desc = "Copilot Disable" })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -111,4 +112,13 @@ vim.api.nvim_set_keymap(
 -- Register Copilot
 vim.api.nvim_set_keymap("i", "<C-a>", 'copilot#Accept("<CR>")', { expr = true, silent = true, desc = "Copilot Accept" })
 vim.api.nvim_set_keymap("i", "<C-e>", "copilot#Dismiss()", { expr = true, silent = true, desc = "Copilot Dismiss" })
+
+-- Copy buffer path to clipboard
+vim.keymap.set("n", "<leader>cp", function()
+	vim.fn.setreg("+", vim.fn.expand("%:p"))
+	vim.notify("Copied: " .. vim.fn.expand("%:p"))
+end, { desc = "Copy buffer path to clipboard" })
+
+-- Gitlab
+vim.keymap.set("n", "<leader>gr", ":lua require('gitlab').review()<CR>", { desc = "Run GitLab Review" })
 -- vim: ts=2 sts=2 sw=2 et

@@ -36,7 +36,7 @@ local config ={
 		"CopilotC-Nvim/CopilotChat.nvim",
 		-- version = "v3.9.1", -- Use a specific version to prevent breaking changes
 		dependencies = {
-			{ "nvim-telescope/telescope.nvim" }, -- Use telescope for help actions
+			-- { "nvim-telescope/telescope.nvim" }, -- Use telescope for help actions
 			{ "nvim-lua/plenary.nvim" },
 		},
 		opts = {
@@ -132,12 +132,12 @@ local config ={
 				end,
 				desc = "CopilotChat - Prompt actions",
 			},
-			{
-				"<leader>ap",
-				":lua require('CopilotChat.integrations.telescope').pick(require('CopilotChat.actions').prompt_actions({selection = require('CopilotChat.select').visual}))<CR>",
-				mode = "x",
-				desc = "CopilotChat - Prompt actions",
-			},
+			-- {
+			-- 	"<leader>ap",
+			-- 	":lua require('CopilotChat.integrations.telescope').pick(require('CopilotChat.actions').prompt_actions({selection = require('CopilotChat.select').visual}))<CR>",
+			-- 	mode = "x",
+			-- 	desc = "CopilotChat - Prompt actions",
+			-- },
 			-- Code related commands
 			{ "<leader>ae", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
 			{ "<leader>at", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },

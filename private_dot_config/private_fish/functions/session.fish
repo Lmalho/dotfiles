@@ -60,10 +60,17 @@ function session
         end
     end
 
-    # Attach to the session
-    if not tmux attach-session -t "$SESSION"
-        echo "Error: Failed to attach to tmux session '$SESSION'."
-        return 1
+    # Attach or switch to the session depending on whether we are already in tmux
+    if set -q TMUX
+        if not tmux switch-client -t "$SESSION"
+            echo "Error: Failed to switch to tmux session '$SESSION'."
+            return 1
+        end
+    else
+        if not tmux attach-session -t "$SESSION"
+            echo "Error: Failed to attach to tmux session '$SESSION'."
+            return 1
+        end
     end
 end
 
